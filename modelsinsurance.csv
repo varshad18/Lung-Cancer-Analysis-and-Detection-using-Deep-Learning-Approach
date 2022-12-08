@@ -1,0 +1,5 @@
+Model,Score
+Logistic Regression,0.7601485628002146
+Random Forest Regression,0.8504417602567758
+Decision Tree Regression,0.846320523239463
+Lasso Regression,0.76014806951835
