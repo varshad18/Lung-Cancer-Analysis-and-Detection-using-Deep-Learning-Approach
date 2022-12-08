@@ -1,0 +1,117 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>
+  
+        body {
+            margin: 4rem;
+            background-color: #009ffd;
+           
+        }
+        
+ 
+        .container {
+            padding:20px;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #000000;
+            line-height: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            background-color: white;   
+            box-shadow: -6px 13px 20px 0px rgba(0, 0, 0, 0.75); 
+        }
+
+        form {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px #ccc;
+        }
+        
+        input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+
+        
+        input[type=submit]{
+            background-color: #009ffd;
+            color:white;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            border-color: #009ffd;
+        }
+      
+</style>
+<title>Lung Cancer Type Detection</title>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Lung Cancer CT Scan Type Detection</h1>
+    <div><p style="text-align:center; font-size: large;position: relative;">Majority of symptoms suggest that the patient is <b>at risk</b> of lung cancer. <br>
+        It is recommended to get a CT scan tested to confirm the same,detect the type and predict the stage (if required).<br>
+    The patient can also obtain an estimate of the medical cost in case they are diagnosed with lung cancer, post the diagnosis<br></p>
+    </div>
+    <h2>Select a file to upload</h2>
+    <p>Upload the CT scan through the following link, follow the <b>tips</b> given below to ensure correct detection<br></p>
+    <div class="row">
+       
+        <p style="text-align: left;">
+            
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </p>
+        
+    
+        {% if filename %}
+            <div>
+                <img src="{{ url_for('display_image', filename=filename) }}">
+            </div>
+        {% endif %}
+        
+        <form method="post" action="{{ url_for('upload_image')}}" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" class="form-control" autocomplete="off" required>
+                </p>
+            </dl>
+            
+            <p>
+                <input  type="submit" value="Submit" class="btn btn-info">
+            </p>
+        </form>
+         <div>   
+        <p>   
+            <br>    
+           <ul style="text-align: left;">
+            <lh style="font-size: medium;"><b>Tips:</b></lh>
+               <li>Ensure the file is in <b>.png, .jpg, .jpeg or .gif</b> format only</li>
+               <li>Make sure the CT scan is taken by a medical professional</li>
+               <li>Make sure the scan is clear</li>
+           </ul>
+        </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

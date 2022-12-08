@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        body{
+            background-color: white;
+           font-family:arial, 'sans serif';
+        }
+
+        h1{
+            background:#009ffd;
+            padding:10px;
+            text-align: center;
+        }
+        h3{
+          text-align: center;
+          color: black;
+          margin-top: 10px;
+          font-size: large;
+        }
+
+
+        .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 30px;
+  background-color: #009ffd;
+  padding: 30px;
+  justify-content: center;
+}
+
+.grid-container > div {
+  background-color:white;
+  text-align: center;
+  padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: 1rem;
+}
+a:hover{
+    color:#009ffd;
+    text-decoration: underline;
+}
+
+img{
+    height:30%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+    </style>
+    <title>Lung Cancer Detection</title>
+</head>
+<body>
+    <h1>
+        Lung Cancer Detection based on Symptoms
+    </h1>
+    
+    <h3>What would you like to have a look at?</h3>  
+    <img src="https://dailynorthwestern.com/wp-content/uploads/2019/05/CANCER_Courtesy_WEB-900x600.jpg" alt="lung cancer" />
+
+        <div class="grid-container" >
+            <div> <a  href="chart1">Lung Cancer Analysis using Plotly</a></div>
+            <div> <a  href="lungcancer">Lung Cancer Detection based on Symptoms</a></div>
+     </div>
+        
+</body>
+</html>

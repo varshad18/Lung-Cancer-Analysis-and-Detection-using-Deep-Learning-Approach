@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lung Cancer Detection</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            min-height: 100%;
+            margin: 4rem;
+            background-color: #009ffd;
+            box-shadow: -6px 13px 20px 0px rgba(0, 0, 0, 0.75);
+        }
+        
+        .container {
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        body,
+        div,
+        form,
+        input,
+        select {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #000000;
+            line-height: 22px;
+        }
+        
+        h1,
+        h4 {
+            margin: 15px 0 4px;
+            font-weight: 400;
+        }
+        
+        .testbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: inherit;
+            padding: 3px;
+        }
+        
+        form {
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px #ccc;
+        }
+        
+        input {
+            width: calc(100% - 10px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+        
+        input:hover,
+        textarea:hover,
+        select:hover {
+            outline: none;
+            border: 1px solid #009ffd;
+        }
+        
+        .name input {
+            margin-bottom: 10px;
+        }
+        
+        select {
+            padding: 7px 0;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background: #e6eef7;
+        }
+        
+        option {
+            background: #fff;
+        }
+        
+        select,
+        table {
+            width: 100%;
+        }
+        
+        .question-answer label {
+            display: block;
+            padding: 0 20px 10px 0;
+        }
+        
+        .question-answer input {
+            width: auto;
+            margin-top: -2px;
+        }
+        
+        th,
+        td {
+            width: 18%;
+            padding: 15px 0;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+            vertical-align: unset;
+            line-height: 18px;
+            font-weight: 400;
+            word-break: break-all;
+        }
+        
+        .first-col {
+            width: 25%;
+            text-align: left;
+        }
+        
+        .btn-block {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: #009ffd;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #009ffd;
+        }
+        
+        @media (min-width: 568px) {
+            .name {
+                display: flex;
+                justify-content: space-between;
+            }
+            .name input {
+                width: 47%;
+                margin-bottom: 0;
+            }
+            th,
+            td {
+                word-break: keep-all;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="testbox">
+        <form action="{{ url_for('predicts')}}" method="post">
+            <h1>Lung Cancer Prediction</h1>
+            <p>Please help us get the following information. Thank you!</p>
+            <h4>Age</h4>
+            <div class="name">
+                <input type="number" name="name" placeholder="Age" required min="1" max="118"/>
+            </div>
+            <h4>Gender</h4>
+            <div class="question-answer">
+                <label><input type="radio" value="0" name="Gender" required/> Female</label>
+                <label><input type="radio" value="1" name="Gender" /> Male</label>
+            </div>
+            <h4> Symptoms </h4>
+            <table>
+                <tr>
+                    <th class="first-col"></th>
+                    <th>Yes</th>
+                    <th>No</th>
+                </tr>
+                <tr>
+                    <td class="first-col">Smoking</td>
+                    <td><input type="radio" value="2" name="Smoking" /></td>
+                    <td><input type="radio" value="1" name="Smoking" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Yellow Fingers</td>
+                    <td><input type="radio" value="2" name="Yellow Fingers" /></td>
+                    <td><input type="radio" value="1" name="Yellow Fingers" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Anxiety</td>
+                    <td><input type="radio" value="2" name="Anxiety" required /></td>
+                    <td><input type="radio" value="1" name="Anxiety" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Peer_pressure</td>
+                    <td><input type="radio" value="2" name="Peer_pressure" required /></td>
+                    <td><input type="radio" value="1" name="Peer_pressure" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Chronic Diseases</td>
+                    <td><input type="radio" value="2" name="Chronic Diseases" required /></td>
+                    <td><input type="radio" value="1" name="Chronic Diseases" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Fatigue</td>
+                    <td><input type="radio" value="2" name="Fatigue" required /></td>
+                    <td><input type="radio" value="1" name="Fatigue" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Allergy</td>
+                    <td><input type="radio" value="2" name="Allergy" required /></td>
+                    <td><input type="radio" value="1" name="Allergy" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Wheezing</td>
+                    <td><input type="radio" value="2" name="Wheezing" required /></td>
+                    <td><input type="radio" value="1" name="Wheezing" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Alcohol</td>
+                    <td><input type="radio" value="2" name="Alcohol" required/></td>
+                    <td><input type="radio" value="1" name="Alcohol" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Coughing</td>
+                    <td><input type="radio" value="2" name="Coughing" required/></td>
+                    <td><input type="radio" value="1" name="Coughing" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Shortness of Breath</td>
+                    <td><input type="radio" value="2" name="Shortness of Breath" required/></td>
+                    <td><input type="radio" value="1" name="Shortness of Breath" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Swallowing Difficulty</td>
+                    <td><input type="radio" value="2" name="Swallowing Difficulty" required /></td>
+                    <td><input type="radio" value="1" name="Swallowing Difficulty" /></td>
+
+                </tr>
+                <tr>
+                    <td class="first-col">Chest pain</td>
+                    <td><input type="radio" value="2" name="Chest pain" required /></td>
+                    <td><input type="radio" value="1" name="Chest pain" /></td>
+
+                </tr>
+
+            </table>
+            <div class="btn-block">
+                <button type="submit" href="/">Show Results</button>
+            </div>
+            
+
+        </form>
+        
+    </div>    
+     
+    
+</body>
+
+</html>

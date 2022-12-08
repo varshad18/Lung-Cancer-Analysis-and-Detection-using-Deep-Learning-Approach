@@ -1,0 +1,91 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+        body {
+            margin: 4rem;
+            background-color: #009ffd;
+           
+        }
+
+
+        .container {
+            padding:20px;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #000000;
+            line-height: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            background-color: white;   
+            box-shadow: -6px 13px 20px 0px rgba(0, 0, 0, 0.75); 
+        }
+
+        img{
+            float:left;           
+        }
+
+
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: #009ffd;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #fff;
+            color:#009ffd;
+        }
+        
+
+</style>
+<title>Lung Cancer Type Detection</title>
+
+</head>
+<body>
+
+ <div class="container">
+    <h1>Lung Cancer CT Scan Type Detection</h1>
+    <div class="row" style="display: inline;">
+        <h2 style="height: fit-content;width: 100%;">Uploaded image is shown below</h2><br>
+        
+        {% if filename %}
+            <div ><span>
+                <br><br><br>
+                <img src="{{ url_for('display_image', filename=filename) }}">
+            </span>
+                
+            <span >
+            <p>
+                <h2   style="text-align: center;">{{prediction_text}}</h2><br><br>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul >
+                    {% for message in messages %}
+                      <li style="text-align: justify;position: relative;left: 5%; ">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+            </p>
+            <br><br><br><br>
+           
+            <div><br><a  href="{{ url_for('unet')}}" style="position:relative;"><button>Nodule Detection</button></a><br><br><br></div>
+        {% endif %}
+    </span>
+    </div>
+ </div>
+
+</body>
+</html>

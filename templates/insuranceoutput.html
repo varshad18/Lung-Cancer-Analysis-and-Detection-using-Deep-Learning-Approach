@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insurance Estimation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        
+        body{
+            margin: 4rem;
+            background-color: #009ffd; 
+            box-shadow: -6px 13px 20px 0px rgba(0, 0, 0, 0.75);
+        }
+        
+
+        div {
+            padding: 20px;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #000000;
+            line-height: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            background-color: white;    
+        }
+        
+        h1 { 
+            font-weight: bold;
+        }
+
+        .output {
+            font-size: xx-large;
+        }
+        p{
+            text-align: center;
+            font-size: large;
+        }
+
+        button{
+            background-color: #009ffd;
+            color:white;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            border-color: #009ffd;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+       
+        <h1> Insurance Costs Prediction</h1>
+        <p class="output">{{prediction_text}}</p>
+            
+        <p>Click on the following button to detect lung cancer based on CT scan.<br></p>
+        <a href="stage"><button class="divider">Lung Cancer Type Detection</button></a>
+        
+    </div>
+        
+</body>
+
+</html>

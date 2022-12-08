@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+    body{
+            background-color: white;
+            font-family:arial, 'sans serif';
+        }
+        button{
+            background-color: blue;
+            color: cornsilk;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1{
+            text-align: center;
+            color: blue;
+        }
+        </style>
+    </head>
+<body>
+   
+    <h6><a href="/"><button >Home</button> </a></h6>
+    <h1 ><u>{{header}}</u></h1>
+    <div id="chart" class="chart"></div>
+    <div style="text-align: center;">{{description}}</div>
+</body>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+    var graphs = {{graphJSON | safe}};
+    Plotly.plot('chart',graphs,{});        
+</script>
+</html>
